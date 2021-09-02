@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='C:/'
+let g:netrw_dirhist_8='C:/Users/nchilds/Downloads/Ticket_temp'
+let g:netrw_dirhist_7='C:/_cmd/empty-jira-case'
+let g:netrw_dirhist_6='C:/_cmd'
+let g:netrw_dirhist_5='C:/ApexAccounts/accounts/OMN-OakLeafMedicalNetwork/script/branches/MDC-9181'
+let g:netrw_dirhist_4='C:\ApexAccounts\accounts\OMN-OakLeafMedicalNetwork\script\branches\MDC-9181'
+let g:netrw_dirhist_3='C:/ApexAccounts/accounts/OMN-OakLeafMedicalNetwork/script/branches/MDC-9181'
+let g:netrw_dirhist_2='C:\ApexAccounts\accounts\OMN-OakLeafMedicalNetwork\script\branches\MDC-9181'
+let g:netrw_dirhist_1='C:/Users/nchilds/Templates'
+let g:netrw_dirhist_0='C:/Users/nchilds'
