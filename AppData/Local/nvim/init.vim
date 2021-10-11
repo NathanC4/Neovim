@@ -11,12 +11,21 @@ nnoremap M :marks<cr>
 noremap <C-t> :tabedit 
 
 noremap <F1> :!runscript.pl<cr><cr>
-noremap <F2> :lcd %:p:h<cr>
+noremap <F2> /[^\x00-\x7F]<cr>
 noremap <F3> :Files C:\ApexAccounts\<cr>
 noremap <F4> :Files ~<cr>
 noremap <F5> :!start explorer %:p:h<cr><cr>
 noremap <F6> :Rg 
 noremap <F7> :call ToggleColumn()<cr>
+
+" Map C-i to insert register
+inoremap <C-i> <C-r>
+
+" Map C-r to redo
+inoremap <C-r> <C-o><C-r>
+
+" Toggle line wrapping
+noremap <leader>d :set wrap!<cr>
 
 " Stop F15 from appearing in input and command mode because of Caffeine
 map! <F15> <nop>
@@ -33,7 +42,7 @@ noremap <C-s> :w<cr>
 inoremap <C-s> <C-o>:w<cr>
 
 " C-q quits all
-noremap <C-q> :qa!<cr> 
+noremap <C-q> :conf qa<cr> 
 
 " C-j joins next line
 noremap <C-j> J
@@ -194,8 +203,10 @@ let g:ale_linters = {'perl': ['perl','perlcritic'] }
 
 """FORMATTING OPTIONS""""
 set tabstop=4 shiftwidth=4 expandtab "Autoreplace tabs with space, use 4 spaces and mark tabs at 4 spaces each.
-set nowrap       "Don't wrap lines.
-set autoindent   "indentation automatically set based on the previous line.
+set nowrap       " Don't wrap lines.
+set linebreak    " Line wrapping doesn't break up words
+set showbreak=>> " Prefix wrapped lines with >>
+set autoindent   " indentation automatically set based on the previous line.
 
 """SEARCH OPTIONS"""
 set ignorecase  " Search ignores case
