@@ -1,3 +1,4 @@
+"
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 "Vim 8.2.3013 downloaded from https://github.com/vim/vim-win32-installer/releases/
