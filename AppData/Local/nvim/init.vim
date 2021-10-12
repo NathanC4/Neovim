@@ -6,10 +6,8 @@ let &packpath = &runtimepath
 let mapleader = ","
 nnoremap <space> :
 vnoremap <space> :
-inoremap jk <Esc>
-nnoremap M :marks<cr>
-noremap <C-t> :tabedit 
 
+noremap <C-t> :tabedit 
 noremap <F1> :!runscript.pl<cr><cr>
 noremap <F2> /[^\x00-\x7F]<cr>
 noremap <F3> :Files C:\ApexAccounts\<cr>
@@ -17,6 +15,17 @@ noremap <F4> :Files ~<cr>
 noremap <F5> :!start explorer %:p:h<cr><cr>
 noremap <F6> :Rg 
 noremap <F7> :call ToggleColumn()<cr>
+
+" Make d delete and move cut to x
+nnoremap dd "_dd
+noremap d "_d
+noremap d "_d
+nnoremap x a<bs><esc>l
+vnoremap x d
+
+inoremap jk <esc>
+
+nnoremap M :marks<cr>
 
 " Map C-i to insert register
 inoremap <C-i> <C-r>
