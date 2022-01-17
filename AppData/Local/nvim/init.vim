@@ -1,4 +1,5 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
+set rtp+=~/.vim/bundle/Vundle.vim
 let &packpath = &runtimepath
 
 """MAPPINGS"""
@@ -6,9 +7,8 @@ let mapleader = ","
 nnoremap <space> :
 vnoremap <space> :
 
-noremap <C-t> :tabedit 
 noremap <F1> :!runscript.pl<cr><cr>
-noremap <F2> /[^\x00-\x7F]<cr>
+noremap <F2> :Files <cr>
 noremap <F3> :Files C:\ApexAccounts\<cr>
 noremap <F4> :Files ~<cr>
 noremap <F5> :!start explorer %:p:h<cr><cr>
@@ -19,19 +19,19 @@ noremap <F7> :call ToggleColumn()<cr>
 nnoremap dd "_dd
 noremap d "_d
 noremap d "_d
-nnoremap x a<bs><esc>l
+nnoremap x "_dl
 vnoremap x d
-nnoremap C Da
+nnoremap D "_d$
+nnoremap C "_d$a
+
+" X cuts line
+nnoremap X dd
 
 inoremap jk <esc>
 
+noremap <C-t> :tabedit 
+
 nnoremap M :marks<cr>
-
-" Map C-i to insert register
-inoremap <C-i> <C-r>
-
-" Map C-r to redo
-inoremap <C-r> <C-o><C-r>
 
 " Toggle line wrapping
 noremap <leader>d :set wrap!<cr>
@@ -44,7 +44,7 @@ nnoremap <Tab> :tabnext<cr>
 nnoremap <S-Tab> :tabprev<cr>
 
 " T for new tab + jump to mark
-nnoremap T :tabnew<cr>'
+nnoremap T :tabnew<cr>`
 
 " C-s saves file
 noremap <C-s> :w<cr>
@@ -70,12 +70,15 @@ inoremap <C-a> <Esc>ggVG
 noremap <C-z> u
 inoremap <C-z> <C-o>u
 
-" C-x redo
-noremap <C-x> <C-r>
-inoremap <C-x> <C-o><C-r>
+" map c-r to redo
+inoremap <C-r> <C-o><C-r>
+
+" Map C-i to insert register
+inoremap <C-i> <C-r>
 
 " Make C-v paste in all modes, move visual block command to C-b
-noremap <C-c> y
+vnoremap <C-x> d
+vnoremap <C-c> y
 noremap <C-v> "+p
 cnoremap <C-v> <C-r>+
 inoremap <C-v> <C-r>+
@@ -126,9 +129,9 @@ set listchars=eol:§,tab:│·,precedes:«,extends:»,nbsp:‡
 
 """""BASICS"""""
 set nocompatible "Expands options so we aren't limited to what only works with Vi
-filetype plugin indent on
 syntax on
 
+set encoding=utf-8
 set hidden
 set history=1000
 set title
@@ -143,28 +146,33 @@ set autochdir                   "Auto change working directory
 set nopaste                     "Format on paste
 
 " Neovim
-set mouse=a
+set mouse=a                     "Allow using mouse
 
 """""""""""""""""""""""""""""""""""
 """""""""""PLUGINS"""""""""""""""""
 """""""""""""""""""""""""""""""""""
 
+" Plugged:
 call plug#begin('~/.vim/plugged')
-
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mechatroner/rainbow_csv'
-
 call plug#end()
 
-" Pathogen:
-" auto-pairs
-execute pathogen#infect()
+" Vundle:
+set shellslash                  "Use forward slash for file names, required by vundle
+filetype off
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe' "Use python 3.8 to build YCM
+call vundle#end()
+filetype plugin indent on 
+set shellslash!
 
-" Rainbow CSV 
+" Rainbow CSV:
 nmap <silent> <leader>w :RainbowNoDelim<cr>
 nmap <silent> <leader>r :RainbowDelim<cr>
 let g:rcsv_max_columns = 100
@@ -208,7 +216,7 @@ let g:airline#extensions#tabline#right_alt_sep = ''
 " ALE settings
 let g:ale_fixers = {'perl': ['perltidy', 'trim_whitespace', 'remove_trailing_lines']}
 let g:ale_linters = {'perl': ['perl','perlcritic'] }
-"let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 1
 
 """FORMATTING OPTIONS""""
 set tabstop=4 shiftwidth=4 expandtab "Autoreplace tabs with space, use 4 spaces and mark tabs at 4 spaces each.
@@ -238,7 +246,8 @@ set scrolloff=3 "start scrolling 3 lines before screen border
 set ruler
 set backspace=indent,eol,start
 set shortmess=atI   " Avoid press Enter messages
-set lz              "Sets lazy redraw.  (prevents redrawing while macro is running).
+set lz              " Sets lazy redraw.  (prevents redrawing while macro is running).
+set rdt=1000        " Turn off syntax highlight if it takes more than 1 second
 
 " Call checktime every second to check if file has been changed by another program
 if !exists("g:CheckUpdateStarted")
