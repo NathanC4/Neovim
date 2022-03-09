@@ -7,13 +7,17 @@ let mapleader = ","
 nnoremap <space> :
 vnoremap <space> :
 
-noremap <F1> :!runscript.pl<cr><cr>
+noremap <F1> :w<cr>:!runscript.pl<cr><cr>
 noremap <F2> :Files <cr>
 noremap <F3> :Files C:\ApexAccounts\<cr>
 noremap <F4> :Files ~<cr>
 noremap <F5> :!start explorer %:p:h<cr><cr>
 noremap <F6> :Rg 
 noremap <F7> :call ToggleColumn()<cr>
+noremap <F9> :%s/\v\C\n([a-z])/ \1<cr>
+
+" ^E next char is literal
+inoremap <C-e> <C-v>
 
 " Make d delete and move cut to x
 nnoremap dd "_dd
@@ -21,7 +25,7 @@ noremap d "_d
 noremap d "_d
 nnoremap x "_dl
 vnoremap x d
-nnoremap D "_d$
+nnoremap D "_dd
 nnoremap C "_d$a
 
 " X cuts line
