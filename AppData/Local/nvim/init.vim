@@ -15,6 +15,7 @@ noremap <F5> :!start explorer %:p:h<cr><cr>
 noremap <F6> :Rg 
 noremap <F7> :call ToggleColumn()<cr>
 noremap <F9> :%s/\v\C\n([a-z])/ \1<cr>
+noremap <F10> /\v[^\x1F-\x7F]+<cr>
 
 " ^E next char is literal
 inoremap <C-e> <C-v>
