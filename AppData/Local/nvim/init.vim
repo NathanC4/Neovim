@@ -11,11 +11,13 @@ noremap <F1> :w<cr>:!runscript.pl<cr><cr>
 noremap <F2> :Files <cr>
 noremap <F3> :Files C:\ApexAccounts\<cr>
 noremap <F4> :Files ~<cr>
-noremap <F5> :!start explorer %:p:h<cr><cr>
+noremap <F5> :!start explorer '%:p:h'<cr><cr>
 noremap <F6> :Rg 
 noremap <F7> :call ToggleColumn()<cr>
-noremap <F9> :%s/\v\C\n([a-z])/ \1<cr>
 noremap <F10> /\v[^\x1F-\x7F]+<cr>
+
+command C :!createScriptArgs.pl
+command RO :!renameScriptForOverture.pl
 
 " ^E next char is literal
 inoremap <C-e> <C-v>
@@ -131,6 +133,13 @@ nmap <silent> <leader>f :silent :nohlsearch<CR>
 " Toggle list chars
 nmap <silent> <leader>s :set nolist!<CR>
 set listchars=eol:§,tab:│·,precedes:«,extends:»,nbsp:‡
+
+" Powershell
+"let &shell = has('win32') ? 'powershell' : 'pwsh'
+"let &shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+"let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+"let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+"set shellquote= shellxquote=
 
 """""BASICS"""""
 set nocompatible "Expands options so we aren't limited to what only works with Vi
