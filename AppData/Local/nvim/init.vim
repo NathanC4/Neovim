@@ -11,16 +11,27 @@ noremap <F1> :w<cr>:!runscript.pl<cr><cr>
 noremap <F2> :Files <cr>
 noremap <F3> :Files C:\ApexAccounts\<cr>
 noremap <F4> :Files ~<cr>
-noremap <F5> :!start explorer '%:p:h'<cr><cr>
+noremap <F5> :!start explorer /select,%:p<cr><cr>
 noremap <F6> :Rg 
+
+" Highlight column
 noremap <F7> :call ToggleColumn()<cr>
+
+" Search for non-ASCII chars
 noremap <F10> /\v[^\x1F-\x7F]+<cr>
 
 command C :!createScriptArgs.pl
 command RO :!renameScriptForOverture.pl
 
+" Decrement selection
+vnoremap <C-z> <C-x>
+
 " ^E next char is literal
 inoremap <C-e> <C-v>
+cnoremap <C-e> <C-v>
+
+vnoremap a <Esc>a
+vnoremap A <Esc>A
 
 " Make d delete and move cut to x
 nnoremap dd "_dd
@@ -28,11 +39,11 @@ noremap d "_d
 noremap d "_d
 nnoremap x "_dl
 vnoremap x d
+nnoremap X dd
 nnoremap D "_dd
 nnoremap C "_d$a
-
-" X cuts line
-nnoremap X dd
+vnoremap p "_dp
+vnoremap P "_dP
 
 inoremap jk <esc>
 
@@ -74,7 +85,7 @@ nnoremap <C-a> ggVG
 inoremap <C-a> <Esc>ggVG
 
 " C-z undo
-noremap <C-z> u
+nnoremap <C-z> u
 inoremap <C-z> <C-o>u
 
 " map c-r to redo
@@ -111,6 +122,11 @@ inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 inoremap <C-l> <C-o>l
 
+noremap <S-Left>  50h
+inoremap <S-Left> 50h
+noremap <S-Right>  50l
+inoremap <S-Right> 50l
+
 " Make o & O not enter insert mode
 noremap o o<Esc>k
 noremap O O<Esc>j
@@ -132,7 +148,7 @@ nmap <silent> <leader>f :silent :nohlsearch<CR>
 
 " Toggle list chars
 nmap <silent> <leader>s :set nolist!<CR>
-set listchars=eol:§,tab:│·,precedes:«,extends:»,nbsp:‡
+set listchars=eol:§,tab:│·,precedes:«,extends:»,nbsp:‡,space:·
 
 " Powershell
 "let &shell = has('win32') ? 'powershell' : 'pwsh'
@@ -158,6 +174,7 @@ set laststatus=2                "Status bar always on
 set t_Co=256                    "Terminal colors
 set autochdir                   "Auto change working directory
 set nopaste                     "Format on paste
+set nojoinspaces                "No double space after punctuation when joining lines
 
 " Neovim
 set mouse=a                     "Allow using mouse
