@@ -123,9 +123,7 @@ inoremap <C-k> <C-o>k
 inoremap <C-l> <C-o>l
 
 noremap <S-Left>  50h
-inoremap <S-Left> 50h
 noremap <S-Right>  50l
-inoremap <S-Right> 50l
 
 " Make o & O not enter insert mode
 noremap o o<Esc>k
