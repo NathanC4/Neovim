@@ -23,6 +23,9 @@ noremap <F10> /\v[^\x1F-\x7F]+<cr>
 command C :!createScriptArgs.pl
 command RO :!renameScriptForOverture.pl
 
+" Copy line without \n
+nnoremap Y ^y$
+
 " Decrement selection
 vnoremap <C-z> <C-x>
 
