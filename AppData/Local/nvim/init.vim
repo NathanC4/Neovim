@@ -2,6 +2,7 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 set rtp+=~/.vim/bundle/Vundle.vim
 let &packpath = &runtimepath
 
+
 """MAPPINGS"""
 let mapleader = ","
 nnoremap <space> :
