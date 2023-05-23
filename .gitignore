@@ -5,3 +5,4 @@
 !AppData/Local/nvim/
 !AppData/Local/nvim/*
 .vim/plugged/
+.vim/.netrwhist
