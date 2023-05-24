@@ -5,8 +5,8 @@
       "alignment": "left",
       "segments": [
         {
-          "background": "#ff479c",
-          "foreground": "#ffffff",
+          "background": "#87afd7",
+          "foreground": "#000000",
           "leading_diamond": "\ue0b6",
           "properties": {
             "style": "full"
@@ -16,7 +16,7 @@
           "type": "path"
         },
         {
-          "background": "#fffb38",
+          "background": "#193549",
           "foreground": "#193549",
           "powerline_symbol": "\ue0b0",
           "style": "powerline",
