@@ -24,6 +24,9 @@ noremap <F10> /\v[^\x1F-\x7F]+<cr>
 command C :!createScriptArgs.pl
 command RO :!renameScriptForOverture.pl
 
+" C-b to insert literal or char code
+inoremap <C-b> <C-v>
+
 " Copy line without \n
 nnoremap Y ^y$
 
@@ -218,7 +221,7 @@ let g:rcsv_colorpairs = [['red', 'red'], ['yellow', 'yellow'], ['cyan', 'cyan'],
 """WINDOW"""
 set splitright splitbelow   "Windows should default to splitting to the right or below
 set nu rnu                  "Set line number and relative line numbering options on.
-set go-=r                   "Turn off right scrollbar
+"set go-=r                   "Turn off right scrollbar
 set go-=L                   "Turn off left scrollbar
 
 """TEXT COLOR and FONT"""

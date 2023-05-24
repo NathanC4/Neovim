@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "background": "#ff479c",
+          "foreground": "#ffffff",
+          "leading_diamond": "\ue0b6",
+          "properties": {
+            "style": "full"
+          },
+          "style": "diamond",
+          "template": " {{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "background": "#fffb38",
+          "foreground": "#193549",
+          "powerline_symbol": "\ue0b0",
+          "style": "powerline",
+          "template": " {{ .HEAD }} ",
+          "type": "git"
+        },
+        {
+          "background": "#ffff66",
+          "foreground": "#193549",
+          "powerline_symbol": "\ue0b0",
+          "style": "powerline",
+          "template": " \uf0e7 ",
+          "type": "root"
+        },
+        {
+          "background": "#000000",
+          "foreground": "#000000",
+          "powerline_symbol": "\ue0b4",
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "powerline",
+          "template": "-",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "style": "plain",
+          "template": ">",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "final_space": true,
+  "version": 2
+}
