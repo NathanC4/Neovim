@@ -1,9 +1,11 @@
 Set-Location 'C:\MDC Git\Accounts'
 Set-Location 'C:\MDC Git\Accounts'
-# test
 
 Import-Module posh-git
 $GitPromptSettings.EnableFileStatus = $false
+$GitPromptSettings.BeforeStatus.ForegroundColor = 'default'
+$GitPromptSettings.AfterStatus.ForegroundColor = 'default'
+$GitPromptSettings.BranchColor.ForegroundColor = '0x16c60c' # Campbell bright green
 
 # oh-my-posh.exe init pwsh --config '~\ohmyposh.omp.json' | Invoke-Expression
 
@@ -23,7 +25,7 @@ Function goti { Set-Location -Path 'C:\Tickets' }
 
 Function gitvim {
     cd ~
-    git commit -a -m "vim"
+    git commit -a -m "configs"
     git push
 }
 
