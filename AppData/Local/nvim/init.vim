@@ -28,7 +28,10 @@ command RO :!renameScriptForOverture.pl
 inoremap <C-b> <C-v>
 
 " Copy line without \n
-nnoremap Y ^y$
+noremap yy ^y$
+
+" Copy line
+noremap Y yy
 
 " Decrement selection
 vnoremap <C-z> <C-x>

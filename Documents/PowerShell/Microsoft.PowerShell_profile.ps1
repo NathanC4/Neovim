@@ -25,8 +25,12 @@ Function goti { Set-Location -Path 'C:\Tickets' }
 
 Function gitvim {
     cd ~
-    git commit -a -m "configs"
+    git commit -am "configs"
     git push
+}
+
+Function gitclean {
+    git switch main | git branch --merged | %{$_.trim()}  | ?{$_ -notmatch 'dev' -and $_ -notmatch 'master' -and $_ -notmatch 'main'} | %{git branch -d $_.trim()}
 }
 
 Function createDirAndOpen {
