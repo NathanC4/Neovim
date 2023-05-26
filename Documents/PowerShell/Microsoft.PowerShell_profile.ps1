@@ -22,6 +22,7 @@ Function goac { Set-Location -Path 'C:\MDC Git\Accounts' }
 Function goar { Set-Location -Path 'C:\MDC Git\Aria' }
 Function gofr { Set-Location -Path 'C:\MDC Git\Framework' }
 Function goti { Set-Location -Path 'C:\Tickets' }
+Function gs { git status }
 
 Function gitvim {
     cd ~
@@ -29,8 +30,14 @@ Function gitvim {
     git push
 }
 
+# Delete local branches that have been merged into main
 Function gitclean {
     git switch main | git branch --merged | %{$_.trim()}  | ?{$_ -notmatch 'dev' -and $_ -notmatch 'master' -and $_ -notmatch 'main'} | %{git branch -d $_.trim()}
+}
+
+# Git pull recursively
+Function pullrec {
+    Get-ChildItem -Directory -Force -Recurse *.git | ForEach-Object { cd $_.Parent.FullName; Write-Host $_.Parent.FullName; git pull }
 }
 
 Function createDirAndOpen {
