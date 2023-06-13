@@ -22,6 +22,7 @@ Function goac { Set-Location -Path 'C:\MDC Git\Accounts' }
 Function goar { Set-Location -Path 'C:\MDC Git\Aria' }
 Function gofr { Set-Location -Path 'C:\MDC Git\Framework' }
 Function goti { Set-Location -Path 'C:\Tickets' }
+Function gos { Set-Location -Path 'C:\MDC Git\SVN-Archive\accounts' }
 Function gs { git status }
 
 Function gitvim {
