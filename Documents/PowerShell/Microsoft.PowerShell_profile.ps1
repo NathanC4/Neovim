@@ -23,7 +23,29 @@ Function goar { Set-Location -Path 'C:\MDC Git\Aria' }
 Function gofr { Set-Location -Path 'C:\MDC Git\Framework' }
 Function goti { Set-Location -Path 'C:\Tickets' }
 Function gos { Set-Location -Path 'C:\MDC Git\SVN-Archive\accounts' }
-Function gs { git status }
+Function st { git status }
+
+function gs
+{
+    param(
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [ArgumentCompleter({
+            param($pCmd, $pParam, $pWord, $pAst, $pFakes)
+
+            $branchList = (git branch --format='%(refname:short)')
+
+            if ([string]::IsNullOrWhiteSpace($pWord)) {
+                return $branchList;
+            }
+
+            $branchList | Select-String "$pWord"
+        })]
+        [string] $branch
+    )
+
+    git checkout $branch;
+}
 
 Function gitvim {
     cd ~

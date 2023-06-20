@@ -24,6 +24,10 @@ noremap <F10> /\v[^\x1F-\x7F]+<cr>
 command C :!createScriptArgs.pl
 command RO :!renameScriptForOverture.pl
 
+" Increment and decrement
+noremap - <C-x>
+noremap = <C-a>
+
 " C-b to insert literal or char code
 inoremap <C-b> <C-v>
 
