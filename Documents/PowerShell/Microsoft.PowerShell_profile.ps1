@@ -1,8 +1,8 @@
 Set-Location 'C:\MDC Git\Accounts'
-Set-Location 'C:\MDC Git\Accounts'
 
 Import-Module posh-git
 $GitPromptSettings.EnableFileStatus = $false
+$GitPromptSettings.BeforePath.Text = "`n"
 $GitPromptSettings.BeforeStatus.ForegroundColor = 'default'
 $GitPromptSettings.AfterStatus.ForegroundColor = 'default'
 $GitPromptSettings.BranchColor.ForegroundColor = '0x16c60c' # Campbell bright green
@@ -18,12 +18,20 @@ Set-Alias -Name o -Value createDirAndOpen
 Set-Alias -Name ro -Value renameScriptForOverture.pl
 Set-Alias -Name b -Value svnBranch.pl
 
-Function goac { Set-Location -Path 'C:\MDC Git\Accounts' }
+Function goa { Set-Location -Path 'C:\MDC Git\Accounts' }
 Function goar { Set-Location -Path 'C:\MDC Git\Aria' }
-Function gofr { Set-Location -Path 'C:\MDC Git\Framework' }
+Function goap { Set-Location -Path 'C:\Strawberry\perl\site\lib\Apex' }
+Function gof { Set-Location -Path 'C:\MDC Git\Framework' }
 Function goti { Set-Location -Path 'C:\Tickets' }
 Function gos { Set-Location -Path 'C:\MDC Git\SVN-Archive\accounts' }
 Function st { git status }
+Function gpp { git pull -p }
+Function gsm { git switch main }
+
+Function np { 
+    cd "C:\MDC Git\Accounts\.dev"
+    & "./Create a new client project or solution.ps1"
+}
 
 function gs
 {
@@ -51,11 +59,6 @@ Function gitvim {
     cd ~
     git commit -am "configs"
     git push
-}
-
-# Delete local branches that have been merged into main
-Function gitclean {
-    git switch main | git branch --merged | %{$_.trim()}  | ?{$_ -notmatch 'dev' -and $_ -notmatch 'master' -and $_ -notmatch 'main'} | %{git branch -d $_.trim()}
 }
 
 # Git pull recursively
