@@ -37,9 +37,6 @@ noremap yy ^y$
 " Copy line
 noremap Y yy
 
-" Decrement selection
-vnoremap <C-z> <C-x>
-
 " ^E next char is literal
 inoremap <C-e> <C-v>
 cnoremap <C-e> <C-v>
